@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>遶九※譛ｭ繧ｫ繝ｼ繝峨ず繧ｧ繝阪Ξ繝ｼ繧ｿ繝ｼ</title>
+  <title>立て札カードジェネレーター</title>
   <link rel="stylesheet" href="style.css">
   <!-- Google Fonts for Serif font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,8 +13,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>遶九※譛ｭ繧ｫ繝ｼ繝峨ず繧ｧ繝阪Ξ繝ｼ繧ｿ繝ｼ</h1>
-      <p>鬮倡ｴ壽─縺ｮ縺ゅｋ雍育ｭ皮畑縺ｮ遶九※譛ｭ繧剃ｽ懈・繝ｻ繝繧ｦ繝ｳ繝ｭ繝ｼ繝峨〒縺阪∪縺吶・/p>
+      <h1>立て札カードジェネレーター</h1>
+      <p>高級感のある贈答用の立て札を作成・ダウンロードできます。</p>
     </header>
 
     <main>
@@ -22,118 +22,118 @@
         <form id="tatefuda-form">
           
           <fieldset>
-            <legend>逕ｨ邏呵ｨｭ螳・/legend>
+            <legend>用紙設定</legend>
             <div class="form-group">
-              <label>繧ｵ繧､繧ｺ:</label>
-              <label><input type="radio" name="paperSize" value="A4" checked> A4 (螟ｧ)</label>
-              <label><input type="radio" name="paperSize" value="A5"> A4蜊雁・/A5 (蟆・</label>
+              <label>サイズ:</label>
+              <label><input type="radio" name="paperSize" value="A4" checked> A4 (大)</label>
+              <label><input type="radio" name="paperSize" value="A5"> A4半分/A5 (小)</label>
             </div>
             <div class="form-group">
-              <label>蜷代″:</label>
-              <label><input type="radio" name="orientation" value="portrait" checked> 邵ｦ</label>
-              <label><input type="radio" name="orientation" value="landscape"> 讓ｪ</label>
+              <label>向き:</label>
+              <label><input type="radio" name="orientation" value="portrait" checked> 縦</label>
+              <label><input type="radio" name="orientation" value="landscape"> 横</label>
             </div>
             <div class="form-group">
-              <label for="framePattern">陬・｣ｾ繝輔Ξ繝ｼ繝:</label>
+              <label for="framePattern">装飾フレーム:</label>
               <select id="framePattern" name="framePattern">
-                <option value="luxury">繝ｩ繧ｰ繧ｸ繝･繧｢繝ｪ繝ｼ・郁庄繧・°繝ｻ鬮倡ｴ壽─・・/option>
-                <option value="heavygold">繧ｯ繝ｩ繧ｷ繝・け驥榊字・医い繝ｳ繝・ぅ繝ｼ繧ｯ讌ｵ螟ｪ驥第棧・・/option>
-                <option value="simple">繧ｷ繝ｳ繝励Ν・育ｴｰ縺・ｷ壹→繝峨ャ繝茨ｼ・/option>
-                <option value="modern">繝｢繝繝ｳ・医い繧ｷ繝ｳ繝｡繝医Μ繝ｼ繝ｻ蟷ｾ菴募ｭｦ・・/option>
-                <option value="artdeco">繧｢繝ｼ繝ｫ繝・さ・亥ｹｾ菴募ｭｦ繝ｻ繧ｯ繝ｩ繧ｷ繝・け・・/option>
-                <option value="floral">繝懊ち繝九き繝ｫ・育ｹ顔ｴｰ縺ｪ闡峨→繝・ち・・/option>
-                <option value="boldleaf">繝懊ち繝九き繝ｫ繝ｻ繝懊・繝ｫ繝会ｼ育岼繧貞ｼ輔￥蟾ｨ螟ｧ縺ｪ闡会ｼ・/option>
-                <option value="japanese">蜥後Δ繝繝ｳ・域愕濶ｲ縺ｨ驥代・讌ｵ螟ｪ邵∬ｵｷ譫・・/option>
-                <option value="pop">繝昴ャ繝励・繧ｫ繧ｸ繝･繧｢繝ｫ・育ｴ吝聖髮ｪ縺ｨ繝ｪ繝懊Φ・・/option>
-                <option value="vintage">繝ｴ繧｣繝ｳ繝・・繧ｸ・亥商縺・メ繧ｱ繝・ヨ鬚ｨ・・/option>
-                <option value="nordic">蛹玲ｬｧ繝ｻ豌ｴ蠖ｩ繝峨ャ繝茨ｼ域沐繧峨°縺・し繝ｼ繧ｯ繝ｫ縺ｮ驥阪↑繧奇ｼ・/option>
+                <option value="luxury">ラグジュアリー（華やか・高級感）</option>
+                <option value="heavygold">クラシック重厚（アンティーク極太金枠）</option>
+                <option value="simple">シンプル（細い線とドット）</option>
+                <option value="modern">モダン（アシンメトリー・幾何学）</option>
+                <option value="artdeco">アールデコ（幾何学・クラシック）</option>
+                <option value="floral">ボタニカル（繊細な葉とツタ）</option>
+                <option value="boldleaf">ボタニカル・ボールド（目を引く巨大な葉）</option>
+                <option value="japanese">和モダン（朱色と金の極太縁起枠）</option>
+                <option value="pop">ポップ・カジュアル（紙吹雪とリボン）</option>
+                <option value="vintage">ヴィンテージ（古いチケット風）</option>
+                <option value="nordic">北欧・水彩ドット（柔らかいサークルの重なり）</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="bgStyle">閭梧勹繧ｰ繝ｩ繝・・繧ｷ繝ｧ繝ｳ:</label>
+              <label for="bgStyle">背景グラデーション:</label>
               <select id="bgStyle" name="bgStyle">
-                <option value="lavender">阮・＞邏ｫ・医Λ繝吶Φ繝繝ｼ・・/option>
-                <option value="pink">阮・＞繝斐Φ繧ｯ・医＆縺上ｉ・・/option>
-                <option value="blue">阮・＞髱抵ｼ医い繧､繧ｹ繝悶Ν繝ｼ・・/option>
-                <option value="green">阮・＞邱托ｼ医Α繝ｳ繝医げ繝ｪ繝ｼ繝ｳ・・/option>
-                <option value="peach">阮・＞繧ｪ繝ｬ繝ｳ繧ｸ・医ヴ繝ｼ繝・ｼ・/option>
-                <option value="gold">阮・＞驥托ｼ医す繝｣繝ｳ繝代Φ繧ｴ繝ｼ繝ｫ繝会ｼ・/option>
-                <option value="silver">阮・＞驫・医・繝ｩ繝√リ繧ｷ繝ｫ繝舌・・・/option>
-                <option value="white">繧ｰ繝ｩ繝・・繧ｷ繝ｧ繝ｳ縺ｪ縺暦ｼ育區・・/option>
+                <option value="lavender">薄い紫（ラベンダー）</option>
+                <option value="pink">薄いピンク（さくら）</option>
+                <option value="blue">薄い青（アイスブルー）</option>
+                <option value="green">薄い緑（ミントグリーン）</option>
+                <option value="peach">薄いオレンジ（ピーチ）</option>
+                <option value="gold">薄い金（シャンパンゴールド）</option>
+                <option value="silver">薄い銀（プラチナシルバー）</option>
+                <option value="white">グラデーションなし（白）</option>
               </select>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend>縺雁ｱ翫￠蜈・(莉ｻ諢・</legend>
+            <legend>お届け先 (任意)</legend>
             <div class="form-group" style="display: flex; gap: 10px; align-items: center;">
-              <input type="text" id="recipient" name="recipient" placeholder="萓・ 譬ｪ蠑丈ｼ夂､ｾ縲・・莉｣陦ｨ蜿也ｷ蠖ｹ 縲・・ style="flex: 1;">
-              <input type="color" id="colorRecipient" name="colorRecipient" value="#333333" title="縺雁ｱ翫￠蜈医・譁・ｭ苓牡">
+              <input type="text" id="recipient" name="recipient" placeholder="例: 株式会社〇〇 代表取締役 〇〇" style="flex: 1;">
+              <input type="color" id="colorRecipient" name="colorRecipient" value="#333333" title="お届け先の文字色">
             </div>
-            <small>窶ｻ蜈･蜉帙＆繧後◆蝣ｴ蜷医・縺ｿ縲∵忰蟆ｾ縺ｫ縲梧ｧ倥∈縲阪′閾ｪ蜍輔〒霑ｽ蜉縺輔ｌ縺ｾ縺吶・/small>
+            <small>※入力された場合のみ、末尾に「様へ」が自動で追加されます。</small>
           </fieldset>
 
           <fieldset>
-            <legend>繧ｿ繧､繝医Ν (蠢・・</legend>
+            <legend>タイトル (必須)</legend>
             <div class="form-group" style="display: flex; gap: 10px; align-items: center;">
-              <input type="text" id="title" name="title" list="title-presets" value="逾晞幕蠎・ required style="flex: 1;">
-              <input type="color" id="colorTitle" name="colorTitle" value="#C62828" title="繧ｿ繧､繝医Ν縺ｮ譁・ｭ苓牡">
+              <input type="text" id="title" name="title" list="title-presets" value="祝開店" required style="flex: 1;">
+              <input type="color" id="colorTitle" name="colorTitle" value="#C62828" title="タイトルの文字色">
               <datalist id="title-presets">
-                <option value="逾晞幕蠎・></option>
-                <option value="逾晏ｾ｡髢区･ｭ"></option>
-                <option value="蠕｡逾・></option>
-                <option value="逾晏ｾ｡謌千ｴ・></option>
-                <option value="逾晉匱螻・></option>
+                <option value="祝開店"></option>
+                <option value="祝御開業"></option>
+                <option value="御祝"></option>
+                <option value="祝御成約"></option>
+                <option value="祝発展"></option>
               </datalist>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend>蟾ｮ蜃ｺ莠ｺ</legend>
+            <legend>差出人</legend>
             <div class="form-group" style="display: flex; gap: 10px; align-items: center;">
-              <label for="senderCompany" style="white-space: nowrap;">莨夂､ｾ蜷・莉ｻ諢・:</label>
-              <input type="text" id="senderCompany" name="senderCompany" placeholder="萓・ 譬ｪ蠑丈ｼ夂､ｾ逹逕溷ｱ・ style="flex: 1;">
-              <input type="color" id="colorSenderCompany" name="colorSenderCompany" value="#333333" title="莨夂､ｾ蜷阪・譁・ｭ苓牡">
+              <label for="senderCompany" style="white-space: nowrap;">会社名(任意):</label>
+              <input type="text" id="senderCompany" name="senderCompany" placeholder="例: 株式会社着生屋" style="flex: 1;">
+              <input type="color" id="colorSenderCompany" name="colorSenderCompany" value="#333333" title="会社名の文字色">
             </div>
             
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-              <label>蠖ｹ閨ｷ繝ｻ豌丞錐 (騾｣蜷阪・蝣ｴ蜷医・隍・焚蜈･蜉・:</label>
-              <input type="color" id="colorSenderName" name="colorSenderName" value="#000000" title="蠖ｹ閨ｷ繝ｻ豌丞錐縺ｮ譁・ｭ苓牡">
+              <label>役職・氏名 (連名の場合は複数入力):</label>
+              <input type="color" id="colorSenderName" name="colorSenderName" value="#000000" title="役職・氏名の文字色">
             </div>
             <div class="form-group sender-row">
-              <input type="text" name="senderTitle1" placeholder="蠖ｹ閨ｷ1 (萓・ 莉｣陦ｨ蜿也ｷ蠖ｹ)" style="width: 40%; display: inline-block;">
-              <input type="text" name="senderName1" placeholder="豌丞錐1 (蠢・・" required style="width: 55%; display: inline-block;">
+              <input type="text" name="senderTitle1" placeholder="役職1 (例: 代表取締役)" style="width: 40%; display: inline-block;">
+              <input type="text" name="senderName1" placeholder="氏名1 (必須)" required style="width: 55%; display: inline-block;">
             </div>
             <div class="form-group sender-row">
-              <input type="text" name="senderTitle2" placeholder="蠖ｹ閨ｷ2 (莉ｻ諢・" style="width: 40%; display: inline-block;">
-              <input type="text" name="senderName2" placeholder="豌丞錐2 (莉ｻ諢・" style="width: 55%; display: inline-block;">
+              <input type="text" name="senderTitle2" placeholder="役職2 (任意)" style="width: 40%; display: inline-block;">
+              <input type="text" name="senderName2" placeholder="氏名2 (任意)" style="width: 55%; display: inline-block;">
             </div>
             <div class="form-group sender-row">
-              <input type="text" name="senderTitle3" placeholder="蠖ｹ閨ｷ3 (莉ｻ諢・" style="width: 40%; display: inline-block;">
-              <input type="text" name="senderName3" placeholder="豌丞錐3 (莉ｻ諢・" style="width: 55%; display: inline-block;">
+              <input type="text" name="senderTitle3" placeholder="役職3 (任意)" style="width: 40%; display: inline-block;">
+              <input type="text" name="senderName3" placeholder="氏名3 (任意)" style="width: 55%; display: inline-block;">
             </div>
             <div class="form-group sender-row">
-              <input type="text" name="senderTitle4" placeholder="蠖ｹ閨ｷ4 (莉ｻ諢・" style="width: 40%; display: inline-block;">
-              <input type="text" name="senderName4" placeholder="豌丞錐4 (莉ｻ諢・" style="width: 55%; display: inline-block;">
+              <input type="text" name="senderTitle4" placeholder="役職4 (任意)" style="width: 40%; display: inline-block;">
+              <input type="text" name="senderName4" placeholder="氏名4 (任意)" style="width: 55%; display: inline-block;">
             </div>
             <div class="form-group sender-row">
-              <input type="text" name="senderTitle5" placeholder="蠖ｹ閨ｷ5 (莉ｻ諢・" style="width: 40%; display: inline-block;">
-              <input type="text" name="senderName5" placeholder="豌丞錐5 (莉ｻ諢・" style="width: 55%; display: inline-block;">
+              <input type="text" name="senderTitle5" placeholder="役職5 (任意)" style="width: 40%; display: inline-block;">
+              <input type="text" name="senderName5" placeholder="氏名5 (任意)" style="width: 55%; display: inline-block;">
             </div>
             <div class="form-group sender-row">
-              <input type="text" name="senderTitle6" placeholder="蠖ｹ閨ｷ6 (莉ｻ諢・" style="width: 40%; display: inline-block;">
-              <input type="text" name="senderName6" placeholder="豌丞錐6 (莉ｻ諢・" style="width: 55%; display: inline-block;">
+              <input type="text" name="senderTitle6" placeholder="役職6 (任意)" style="width: 40%; display: inline-block;">
+              <input type="text" name="senderName6" placeholder="氏名6 (任意)" style="width: 55%; display: inline-block;">
             </div>
           </fieldset>
 
         </form>
         <div class="actions">
-          <button id="download-btn" class="primary-btn">PNG縺ｨ縺励※繝繧ｦ繝ｳ繝ｭ繝ｼ繝・(300dpi)</button>
+          <button id="download-btn" class="primary-btn">PNGとしてダウンロード (300dpi)</button>
         </div>
       </div>
 
       <div class="preview-panel">
-        <h2>繝励Ξ繝薙Η繝ｼ</h2>
+        <h2>プレビュー</h2>
         <div class="canvas-wrapper">
           <canvas id="preview-canvas"></canvas>
         </div>
@@ -141,6 +141,6 @@
     </main>
   </div>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

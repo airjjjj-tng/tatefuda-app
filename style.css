@@ -145,24 +145,23 @@ small {
 }
 
 .canvas-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
   background: #EFEFEF;
   padding: 20px;
   border-radius: 4px;
   border: 1px solid var(--border-color);
-  overflow: hidden;
+  margin-top: 10px;
 }
 
 canvas {
   max-width: 100%;
   max-height: 100%;
+  min-width: 0;
+  min-height: 0;
   width: auto;
   height: auto;
   object-fit: contain;

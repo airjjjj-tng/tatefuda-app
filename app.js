@@ -389,6 +389,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const totalHeight = blocks.reduce((sum, b) => sum + b.height, 0);
       let currentY = (height - totalHeight) / 2;
 
+      // はみ出し防止の自動縮小（スケーリング）
+      const padding = height * 0.15; // 上下15%の余白を確保
+      let contentScale = 1;
+      if (totalHeight > height - padding) {
+        contentScale = (height - padding) / totalHeight;
+      }
+      
+      ctx.save();
+      if (contentScale < 1) {
+        ctx.translate(width / 2, height / 2);
+        ctx.scale(contentScale, contentScale);
+        ctx.translate(-width / 2, -height / 2);
+      }
+
       // 各ブロックの描画ループ
       for (const block of blocks) {
         const drawY = currentY + (block.height / 2); // textBaseline=middle のため中央を指定
@@ -487,6 +501,8 @@ document.addEventListener("DOMContentLoaded", () => {
         
         currentY += block.height;
       }
+      
+      ctx.restore();
 
     } catch (e) {
       console.error("Render Error:", e);

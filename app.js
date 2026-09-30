@@ -1,4 +1,4 @@
-// 立て札ジェネレーター アプリケーションロジック
+// 立て札ジェネレーター アプリケーションロジチE��
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById('tatefuda-form');
@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctx = canvas.getContext('2d');
   const downloadBtn = document.getElementById('download-btn');
 
-  // 用紙サイズ定義 (300dpi設定)
+  // 用紙サイズ定義 (300dpi設宁E
   // A4 = 210 x 297 mm -> 2480 x 3508 px
   // A5 = 148 x 210 mm -> 1748 x 2480 px
   const SIZES = {
@@ -14,14 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
     A5: { short: 1748, long: 2480 }
   };
 
-  // 高品質なSVGフレームのパスデータ (ベース64化して使用)
+  // 高品質なSVGフレームのパスチE�Eタ (ベ�Eス64化して使用)
   const SVG_FRAME_LUXURY = `
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
-    <!-- 外側の非常に太い金枠 -->
+    <!-- 外�Eの非常に太ぁE��枠 -->
     <rect x="30" y="30" width="940" height="1354" fill="none" stroke="#D4AF37" stroke-width="12" />
-    <!-- 内側の金枠 -->
+    <!-- 冁E�Eの金枠 -->
     <rect x="55" y="55" width="890" height="1304" fill="none" stroke="#D4AF37" stroke-width="4" />
-    <!-- 巨大な四隅のオーナメント -->
+    <!-- 巨大な四隅のオーナメンチE-->
     <g fill="none" stroke="#D4AF37" stroke-width="6">
       <path d="M 30,250 C 150,250 250,150 250,30" />
       <path d="M 55,200 C 120,200 200,120 200,55" />
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <path d="M 945,1214 C 880,1214 800,1294 800,1359" />
       <circle cx="860" cy="1274" r="25" fill="#D4AF37" opacity="0.5"/>
     </g>
-    <!-- 上下左右の大きな装飾 -->
+    <!-- 上下左右の大きな裁E�� -->
     <g fill="#D4AF37">
       <polygon points="500,10 540,42 500,75 460,42" />
       <polygon points="500,1339 540,1372 500,1404 460,1372" />
@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SVG_FRAME_SIMPLE = `
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
-    <!-- 太めの枠線 -->
+    <!-- 太め�E枠緁E-->
     <rect x="40" y="40" width="920" height="1334" fill="none" stroke="#444444" stroke-width="8" />
-    <!-- さらに内側の枠線 -->
+    <!-- さらに冁E�Eの枠緁E-->
     <rect x="60" y="60" width="880" height="1294" fill="none" stroke="#444444" stroke-width="2" />
-    <!-- 四隅の目立つドット -->
+    <!-- 四隅の目立つドッチE-->
     <circle cx="40" cy="40" r="15" fill="#444444"/>
     <circle cx="960" cy="40" r="15" fill="#444444"/>
     <circle cx="40" cy="1374" r="15" fill="#444444"/>
@@ -60,16 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SVG_FRAME_MODERN = `
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
-    <!-- 太くてアシンメトリーな枠線 -->
+    <!-- 太くてアシンメトリーな枠緁E-->
     <rect x="30" y="30" width="880" height="1294" fill="none" stroke="#2c3e50" stroke-width="12" />
     <rect x="90" y="90" width="880" height="1294" fill="none" stroke="#d35400" stroke-width="6" />
-    <!-- 目立つモダンな抽象図形（円） -->
+    <!-- 目立つモダンな抽象図形�E��E�E�E-->
     <g fill="#95a5a6" opacity="0.4">
       <circle cx="80" cy="80" r="140" />
       <circle cx="920" cy="1334" r="120" />
       <circle cx="900" cy="180" r="80" fill="#e74c3c" opacity="0.2"/>
     </g>
-    <!-- 抽象的で巨大なリーフ形状 (テキストに被らないよう縮小) -->
+    <!-- 抽象皁E��巨大なリーフ形状 (チE��ストに被らなぁE��ぁE��封E -->
     <g fill="none" stroke="#34495e" stroke-width="8">
       <path d="M 30,30 Q 180,30 180,180 Q 30,180 30,30" />
       <path d="M 970,1384 Q 820,1384 820,1234 Q 970,1234 970,1384" />
@@ -110,12 +110,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SVG_FRAME_HEAVY_GOLD = `
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
-    <!-- 外側の極太枠 -->
+    <!-- 外�Eの極太枠 -->
     <rect x="20" y="20" width="960" height="1374" fill="none" stroke="#A67B5B" stroke-width="20" />
     <rect x="30" y="30" width="940" height="1354" fill="none" stroke="#FFF" stroke-width="6" />
-    <!-- 内側の太枠 -->
+    <!-- 冁E�Eの太枠 -->
     <rect x="50" y="50" width="900" height="1314" fill="none" stroke="#A67B5B" stroke-width="6" />
-    <!-- 四隅の重厚な装飾 -->
+    <!-- 四隅の重厚な裁E�� -->
     <g fill="#A67B5B">
       <path d="M 20,20 L 150,20 L 150,50 L 50,50 L 50,150 L 20,150 Z" />
       <path d="M 980,20 L 850,20 L 850,50 L 950,50 L 950,150 L 980,150 Z" />
@@ -131,25 +131,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SVG_FRAME_BOLD_LEAF = `
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
-    <!-- 太い緑のベース枠 -->
+    <!-- 太ぁE���Eベ�Eス枠 -->
     <rect x="30" y="30" width="940" height="1354" fill="none" stroke="#2D4A22" stroke-width="12" />
     <rect x="60" y="60" width="880" height="1294" fill="none" stroke="#2D4A22" stroke-width="3" />
-    <!-- 隅の巨大な葉っぱのシルエット -->
+    <!-- 隁E�E巨大な葉っぱのシルエチE�� -->
     <g fill="#2D4A22">
-      <!-- 左上 -->
+      <!-- 左丁E-->
       <path d="M 30,30 Q 150,30 200,200 Q 30,150 30,30" />
       <path d="M 30,30 Q 250,50 300,100 Q 100,200 30,30" />
-      <!-- 右上 -->
+      <!-- 右丁E-->
       <path d="M 970,30 Q 850,30 800,200 Q 970,150 970,30" />
       <path d="M 970,30 Q 750,50 700,100 Q 900,200 970,30" />
-      <!-- 左下 -->
+      <!-- 左丁E-->
       <path d="M 30,1384 Q 150,1384 200,1214 Q 30,1264 30,1384" />
       <path d="M 30,1384 Q 250,1364 300,1314 Q 100,1214 30,1384" />
-      <!-- 右下 -->
+      <!-- 右丁E-->
       <path d="M 970,1384 Q 850,1384 800,1214 Q 970,1264 970,1384" />
       <path d="M 970,1384 Q 750,1364 700,1314 Q 900,1214 970,1384" />
     </g>
-    <!-- サイドの装飾リーフ -->
+    <!-- サイド�E裁E��リーチE-->
     <g fill="#4A7034" opacity="0.8">
       <circle cx="30" cy="707" r="15" />
       <circle cx="970" cy="707" r="15" />
@@ -160,11 +160,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SVG_FRAME_JAPANESE = `
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
-    <!-- 朱色と金の和風枠 -->
+    <!-- 朱色と金�E和風枠 -->
     <rect x="25" y="25" width="950" height="1364" fill="none" stroke="#C62828" stroke-width="16" />
     <rect x="50" y="50" width="900" height="1314" fill="none" stroke="#D4AF37" stroke-width="8" />
     <rect x="65" y="65" width="870" height="1284" fill="none" stroke="#C62828" stroke-width="2" />
-    <!-- 縁起の良い角飾り -->
+    <!-- 縁起の良ぁE��飾めE-->
     <g fill="#D4AF37">
       <polygon points="50,50 150,50 150,65 65,65 65,150 50,150" />
       <polygon points="75,75 120,75 120,85 85,85 85,120 75,120" />
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SVG_FRAME_POP = `
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
-    <!-- 角が丸いポップな太枠 -->
+    <!-- 角が丸ぁE�EチE�Eな太枠 -->
     <rect x="40" y="40" width="920" height="1334" rx="40" ry="40" fill="none" stroke="#FF4081" stroke-width="12" stroke-dasharray="30 15" />
     <rect x="60" y="60" width="880" height="1294" rx="20" ry="20" fill="none" stroke="#00BCD4" stroke-width="4" />
     <!-- 紙吹雪 (Confetti) -->
@@ -203,15 +203,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SVG_FRAME_VINTAGE = `
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
-    <!-- チケットのような切り欠き -->
+    <!-- チケチE��のような刁E��欠ぁE-->
     <path d="
       M 80,30 L 920,30 A 50,50 0 0,0 970,80 L 970,1334 A 50,50 0 0,0 920,1384 L 80,1384 A 50,50 0 0,0 30,1334 L 30,80 A 50,50 0 0,0 80,30 Z
     " fill="none" stroke="#3E2723" stroke-width="4" />
-    <!-- 内側の破線 -->
+    <!-- 冁E�Eの破緁E-->
     <path d="
       M 90,45 L 910,45 A 35,35 0 0,0 955,90 L 955,1324 A 35,35 0 0,0 910,1369 L 90,1369 A 35,35 0 0,0 45,1324 L 45,90 A 35,35 0 0,0 90,45 Z
     " fill="none" stroke="#3E2723" stroke-width="2" stroke-dasharray="10 10" />
-    <!-- 上下のバーコード風装飾 -->
+    <!-- 上下�Eバ�Eコード風裁E�� -->
     <g fill="#3E2723">
       <rect x="400" y="15" width="5" height="15" /><rect x="410" y="15" width="2" height="15" />
       <rect x="417" y="15" width="8" height="15" /><rect x="430" y="15" width="3" height="15" />
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SVG_FRAME_NORDIC = `
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
-    <!-- 不規則な配置の重なり合う半透明サークル（北欧テキスタイル風） -->
+    <!-- 不規則な配置の重なり合ぁE��透�Eサークル�E�北欧チE��スタイル風�E�E-->
     <g opacity="0.6">
       <circle cx="50" cy="50" r="100" fill="#FFAB91" />
       <circle cx="120" cy="80" r="70" fill="#81D4FA" />
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <circle cx="60" cy="1350" r="90" fill="#FFAB91" />
       <circle cx="130" cy="1280" r="50" fill="#81D4FA" />
     </g>
-    <!-- 全体を囲む手書き風のゆるい線 -->
+    <!-- 全体を囲む手書き風のめE��ぁE��E-->
     <path d="M 30,50 Q 500,20 970,50 Q 980,707 970,1364 Q 500,1394 30,1364 Q 20,707 30,50 Z" fill="none" stroke="#5D4037" stroke-width="4" stroke-dasharray="20 10" opacity="0.8" />
   </svg>`;
 
@@ -265,6 +265,10 @@ document.addEventListener("DOMContentLoaded", () => {
       bgStyle: formData.get('bgStyle') || 'lavender',
       recipient: (formData.get('recipient') || '').trim(),
       title: (formData.get('title') || '').trim(),
+      colorRecipient: formData.get('colorRecipient') || '#333333',
+      colorTitle: formData.get('colorTitle') || '#C62828',
+      colorSenderCompany: formData.get('colorSenderCompany') || '#333333',
+      colorSenderName: formData.get('colorSenderName') || '#000000',
       senderCompany: (formData.get('senderCompany') || '').trim(),
       senderTitle1: (formData.get('senderTitle1') || '').trim(),
       senderName1: (formData.get('senderName1') || '').trim(),
@@ -286,21 +290,18 @@ document.addEventListener("DOMContentLoaded", () => {
       canvas.width = width;
       canvas.height = height;
 
-      // 背景色の設定 (グラデーションをもっと濃く)
-      let edgeColor = '#D1C4E9'; // 濃いラベンダー
-      if (state.bgStyle === 'pink') edgeColor = '#F8BBD0'; // 濃いピンク
-      else if (state.bgStyle === 'gold') edgeColor = '#FFECB3'; // 濃いゴールド
-      else if (state.bgStyle === 'green') edgeColor = '#C8E6C9'; // 濃いグリーン
+      // 背景色の設宁E(グラチE�Eションをもっと濁E��)
+      let edgeColor = '#D1C4E9'; // 濁E��ラベンダー
+      if (state.bgStyle === 'pink') edgeColor = '#F8BBD0'; // 濁E��ピンク
+      else if (state.bgStyle === 'gold') edgeColor = '#FFECB3'; // 濁E��ゴールチE      else if (state.bgStyle === 'green') edgeColor = '#C8E6C9'; // 濁E��グリーン
       else if (state.bgStyle === 'white') edgeColor = '#FFFFFF';
 
       const gradient = ctx.createRadialGradient(
         width / 2, height / 2, 0,
         width / 2, height / 2, Math.max(width, height) / 1.2
       );
-      gradient.addColorStop(0, '#FFFFFF'); // 中心は完全に白
-      gradient.addColorStop(0.4, '#FFFFFF'); // 中心から40%の範囲までは真っ白をキープ
-      gradient.addColorStop(1, edgeColor); // 外縁に行くに従ってしっかり色づく
-      
+      gradient.addColorStop(0, '#FFFFFF'); // 中忁E�E完�Eに白
+      gradient.addColorStop(0.4, '#FFFFFF'); // 中忁E��めE0%の篁E��までは真っ白をキーチE      gradient.addColorStop(1, edgeColor); // 外縁に行くに従ってしっかり色づぁE      
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
@@ -322,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img.src = svgDataUrl;
       });
 
-      // --- テキスト描画 ---
+      // --- チE��スト描画 ---
       const centerX = width / 2;
       const scale = Math.min(width, height) / 1748; 
       
@@ -330,9 +331,9 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.textBaseline = 'middle';
 
       // 色の定義
-      const colorTextMain = '#1A1A1A'; 
-      const colorTitle = '#C62828';    
-      const colorSama = '#a05c50';     
+      // colorTextMain removed 
+      const colorTitle = state.colorTitle;    
+      const colorSama = state.colorRecipient;     
 
       // フォントサイズ定義
       const titleFontSize = 320 * scale; 
@@ -349,39 +350,30 @@ document.addEventListener("DOMContentLoaded", () => {
       if (state.senderName2) senders.push({ title: state.senderTitle2, name: state.senderName2 });
       if (state.senderName3) senders.push({ title: state.senderTitle3, name: state.senderName3 });
 
-      // レイアウトブロックの構築（要素の高さと隙間を定義して動的配置する）
-      const blocks = [];
+      // レイアウトブロチE��の構築（要素の高さと隙間を定義して動的配置する�E�E      const blocks = [];
       
       if (state.recipient) {
         blocks.push({ type: 'recipient', height: recFontSize });
-        blocks.push({ type: 'gap', height: 180 * scale }); // 宛先とタイトル間
-      }
+        blocks.push({ type: 'gap', height: 180 * scale }); // 宛�Eとタイトル閁E      }
       
       blocks.push({ type: 'title', height: titleFontSize });
       
       if (state.senderCompany) {
-        blocks.push({ type: 'gap', height: 260 * scale }); // タイトルと会社間（広め）
-        blocks.push({ type: 'company', height: compFontSize });
-        blocks.push({ type: 'gap', height: 160 * scale }); // 会社と氏名間
-      } else {
-        blocks.push({ type: 'gap', height: 260 * scale }); // 会社なしの場合のタイトルと氏名間
-      }
+        blocks.push({ type: 'gap', height: 260 * scale }); // タイトルと会社間（庁E���E�E        blocks.push({ type: 'company', height: compFontSize });
+        blocks.push({ type: 'gap', height: 160 * scale }); // 会社と氏名閁E      } else {
+        blocks.push({ type: 'gap', height: 260 * scale }); // 会社なし�E場合�Eタイトルと氏名閁E      }
       
       if (senders.length > 0) {
-        // 連名の数だけ高さを確保（名前間の隙間も含む）
-        const nameSpacing = 60 * scale;
+        // 連名�E数だけ高さを確保（名前間の隙間も含む�E�E        const nameSpacing = 60 * scale;
         const totalNamesHeight = (nameFontSize * senders.length) + (nameSpacing * (senders.length - 1));
         blocks.push({ type: 'names', height: totalNamesHeight, senders: senders, spacing: nameSpacing });
       }
 
-      // ブロック全体の高さを計算して、Yのスタート位置を決める（垂直中央揃え）
-      const totalHeight = blocks.reduce((sum, b) => sum + b.height, 0);
+      // ブロチE��全体�E高さを計算して、Yのスタート位置を決める�E�垂直中央揁E���E�E      const totalHeight = blocks.reduce((sum, b) => sum + b.height, 0);
       let currentY = (height - totalHeight) / 2;
 
-      // 各ブロックの描画ループ
-      for (const block of blocks) {
-        const drawY = currentY + (block.height / 2); // textBaseline=middle のため中央を指定
-
+      // 吁E��ロチE��の描画ルーチE      for (const block of blocks) {
+        const drawY = currentY + (block.height / 2); // textBaseline=middle のため中央を指宁E
         if (block.type === 'recipient') {
           const recText = state.recipient;
           const suffix = ' 様へ';
@@ -397,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
           
           ctx.textAlign = 'left';
           ctx.font = `900 ${recFontSize}px "Noto Serif JP", serif`;
-          ctx.fillStyle = colorTextMain;
+          ctx.fillStyle = (block.type === 'recipient') ? state.colorRecipient : (block.type === 'company' ? state.colorSenderCompany : state.colorSenderName);
           ctx.fillText(recText, startX, drawY);
           
           startX += textWidth + space;
@@ -409,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ctx.textAlign = 'center';
           ctx.font = `900 ${titleFontSize}px "Noto Serif JP", serif`;
           ctx.fillStyle = colorTitle;
-          const displayTitle = state.title || '祝';
+          const displayTitle = state.title || '祁E;
           ctx.fillText(displayTitle, centerX, drawY);
         }
         else if (block.type === 'company') {
@@ -428,7 +420,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           let startX = centerX - (totalWidth / 2);
           ctx.textAlign = 'left';
-          ctx.fillStyle = colorTextMain;
+          ctx.fillStyle = (block.type === 'recipient') ? state.colorRecipient : (block.type === 'company' ? state.colorSenderCompany : state.colorSenderName);
           
           measuredParts.forEach(p => {
             ctx.font = p.font;
@@ -437,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
         else if (block.type === 'names') {
-          let nameStartY = currentY + (nameFontSize / 2); // 最初の名前のY
+          let nameStartY = currentY + (nameFontSize / 2); // 最初�E名前のY
           const spaceBetweenTitleAndName = 30 * scale; 
           
           block.senders.forEach(sender => {
@@ -452,7 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let startXName = centerX - (totalNameWidth / 2);
             ctx.textAlign = 'left';
-            ctx.fillStyle = colorTextMain;
+            ctx.fillStyle = (block.type === 'recipient') ? state.colorRecipient : (block.type === 'company' ? state.colorSenderCompany : state.colorSenderName);
 
             if (sender.title) {
               ctx.font = `700 ${titleFontSize2}px "Noto Serif JP", serif`;

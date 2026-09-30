@@ -63,16 +63,18 @@
 
           <fieldset>
             <legend>お届け先 (任意)</legend>
-            <div class="form-group">
-              <input type="text" id="recipient" name="recipient" placeholder="例: 株式会社〇〇 代表取締役 〇〇">
-              <small>※入力された場合のみ、末尾に「様へ」が自動で追加されます。</small>
+            <div class="form-group" style="display: flex; gap: 10px; align-items: center;">
+              <input type="text" id="recipient" name="recipient" placeholder="例: 株式会社〇〇 代表取締役 〇〇" style="flex: 1;">
+              <input type="color" id="colorRecipient" name="colorRecipient" value="#333333" title="お届け先の文字色">
             </div>
+            <small>※入力された場合のみ、末尾に「様へ」が自動で追加されます。</small>
           </fieldset>
 
           <fieldset>
             <legend>タイトル (必須)</legend>
-            <div class="form-group">
-              <input type="text" id="title" name="title" list="title-presets" value="祝開店" required>
+            <div class="form-group" style="display: flex; gap: 10px; align-items: center;">
+              <input type="text" id="title" name="title" list="title-presets" value="祝開店" required style="flex: 1;">
+              <input type="color" id="colorTitle" name="colorTitle" value="#C62828" title="タイトルの文字色">
               <datalist id="title-presets">
                 <option value="祝開店"></option>
                 <option value="祝御開業"></option>
@@ -85,12 +87,16 @@
 
           <fieldset>
             <legend>差出人</legend>
-            <div class="form-group">
-              <label for="senderCompany">会社名 (任意):</label>
-              <input type="text" id="senderCompany" name="senderCompany" placeholder="例: 株式会社着生屋">
+            <div class="form-group" style="display: flex; gap: 10px; align-items: center;">
+              <label for="senderCompany" style="white-space: nowrap;">会社名(任意):</label>
+              <input type="text" id="senderCompany" name="senderCompany" placeholder="例: 株式会社着生屋" style="flex: 1;">
+              <input type="color" id="colorSenderCompany" name="colorSenderCompany" value="#333333" title="会社名の文字色">
             </div>
             
-            <label>役職・氏名 (連名の場合は複数入力):</label>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+              <label>役職・氏名 (連名の場合は複数入力):</label>
+              <input type="color" id="colorSenderName" name="colorSenderName" value="#000000" title="役職・氏名の文字色">
+            </div>
             <div class="form-group sender-row">
               <input type="text" name="senderTitle1" placeholder="役職1 (例: 代表取締役)" style="width: 40%; display: inline-block;">
               <input type="text" name="senderName1" placeholder="氏名1 (必須)" required style="width: 55%; display: inline-block;">

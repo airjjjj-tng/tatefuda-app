@@ -155,15 +155,15 @@ small {
   padding: 20px;
   border-radius: 4px;
   border: 1px solid var(--border-color);
+  overflow: hidden;
 }
 
 canvas {
   /* Scale visually, real size is huge (300dpi) */
   max-width: 100%;
   max-height: 100%;
-  min-height: 0;
-  min-width: 0;
-  flex-shrink: 1;
+  width: auto;
+  height: auto;
   object-fit: contain;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   background: white;

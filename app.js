@@ -108,12 +108,88 @@ document.addEventListener("DOMContentLoaded", () => {
     </g>
   </svg>`;
 
+  const SVG_FRAME_HEAVY_GOLD = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
+    <!-- 外側の極太枠 -->
+    <rect x="20" y="20" width="960" height="1374" fill="none" stroke="#A67B5B" stroke-width="20" />
+    <rect x="30" y="30" width="940" height="1354" fill="none" stroke="#FFF" stroke-width="6" />
+    <!-- 内側の太枠 -->
+    <rect x="50" y="50" width="900" height="1314" fill="none" stroke="#A67B5B" stroke-width="6" />
+    <!-- 四隅の重厚な装飾 -->
+    <g fill="#A67B5B">
+      <path d="M 20,20 L 150,20 L 150,50 L 50,50 L 50,150 L 20,150 Z" />
+      <path d="M 980,20 L 850,20 L 850,50 L 950,50 L 950,150 L 980,150 Z" />
+      <path d="M 20,1394 L 150,1394 L 150,1364 L 50,1364 L 50,1264 L 20,1264 Z" />
+      <path d="M 980,1394 L 850,1394 L 850,1364 L 950,1364 L 950,1264 L 980,1264 Z" />
+    </g>
+    <!-- 追加の四隅の丸み -->
+    <circle cx="85" cy="85" r="20" fill="#A67B5B" />
+    <circle cx="915" cy="85" r="20" fill="#A67B5B" />
+    <circle cx="85" cy="1329" r="20" fill="#A67B5B" />
+    <circle cx="915" cy="1329" r="20" fill="#A67B5B" />
+  </svg>`;
+
+  const SVG_FRAME_BOLD_LEAF = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
+    <!-- 太い緑のベース枠 -->
+    <rect x="30" y="30" width="940" height="1354" fill="none" stroke="#2D4A22" stroke-width="12" />
+    <rect x="60" y="60" width="880" height="1294" fill="none" stroke="#2D4A22" stroke-width="3" />
+    <!-- 隅の巨大な葉っぱのシルエット -->
+    <g fill="#2D4A22">
+      <!-- 左上 -->
+      <path d="M 30,30 Q 150,30 200,200 Q 30,150 30,30" />
+      <path d="M 30,30 Q 250,50 300,100 Q 100,200 30,30" />
+      <!-- 右上 -->
+      <path d="M 970,30 Q 850,30 800,200 Q 970,150 970,30" />
+      <path d="M 970,30 Q 750,50 700,100 Q 900,200 970,30" />
+      <!-- 左下 -->
+      <path d="M 30,1384 Q 150,1384 200,1214 Q 30,1264 30,1384" />
+      <path d="M 30,1384 Q 250,1364 300,1314 Q 100,1214 30,1384" />
+      <!-- 右下 -->
+      <path d="M 970,1384 Q 850,1384 800,1214 Q 970,1264 970,1384" />
+      <path d="M 970,1384 Q 750,1364 700,1314 Q 900,1214 970,1384" />
+    </g>
+    <!-- サイドの装飾リーフ -->
+    <g fill="#4A7034" opacity="0.8">
+      <circle cx="30" cy="707" r="15" />
+      <circle cx="970" cy="707" r="15" />
+      <circle cx="500" cy="30" r="15" />
+      <circle cx="500" cy="1384" r="15" />
+    </g>
+  </svg>`;
+
+  const SVG_FRAME_JAPANESE = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
+    <!-- 朱色と金の和風枠 -->
+    <rect x="25" y="25" width="950" height="1364" fill="none" stroke="#C62828" stroke-width="16" />
+    <rect x="50" y="50" width="900" height="1314" fill="none" stroke="#D4AF37" stroke-width="8" />
+    <rect x="65" y="65" width="870" height="1284" fill="none" stroke="#C62828" stroke-width="2" />
+    <!-- 縁起の良い角飾り -->
+    <g fill="#D4AF37">
+      <!-- 左上 -->
+      <polygon points="50,50 150,50 150,65 65,65 65,150 50,150" />
+      <polygon points="75,75 120,75 120,85 85,85 85,120 75,120" />
+      <!-- 右上 -->
+      <polygon points="950,50 850,50 850,65 935,65 935,150 950,150" />
+      <polygon points="925,75 880,75 880,85 915,85 915,120 925,120" />
+      <!-- 左下 -->
+      <polygon points="50,1364 150,1364 150,1349 65,1349 65,1264 50,1264" />
+      <polygon points="75,1339 120,1339 120,1329 85,1329 85,1294 75,1294" />
+      <!-- 右下 -->
+      <polygon points="950,1364 850,1364 850,1349 935,1349 935,1264 950,1264" />
+      <polygon points="925,1339 880,1339 880,1329 915,1329 915,1294 925,1294" />
+    </g>
+  </svg>`;
+
   const FRAMES = {
     luxury: SVG_FRAME_LUXURY,
+    heavygold: SVG_FRAME_HEAVY_GOLD,
     simple: SVG_FRAME_SIMPLE,
     modern: SVG_FRAME_MODERN,
     artdeco: SVG_FRAME_ARTDECO,
-    floral: SVG_FRAME_FLORAL
+    floral: SVG_FRAME_FLORAL,
+    boldleaf: SVG_FRAME_BOLD_LEAF,
+    japanese: SVG_FRAME_JAPANESE
   };
 
   function getState() {

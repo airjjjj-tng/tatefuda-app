@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>立て札カードジェネレーター</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for Serif font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>立て札カードジェネレーター</h1>
+      <p>高級感のある贈答用の立て札を作成・ダウンロードできます。</p>
+    </header>
+
+    <main>
+      <div class="editor-panel">
+        <form id="tatefuda-form">
+          
+          <fieldset>
+            <legend>用紙設定</legend>
+            <div class="form-group">
+              <label>サイズ:</label>
+              <label><input type="radio" name="paperSize" value="A4" checked> A4 (大)</label>
+              <label><input type="radio" name="paperSize" value="A5"> A4半分/A5 (小)</label>
+            </div>
+            <div class="form-group">
+              <label>向き:</label>
+              <label><input type="radio" name="orientation" value="portrait" checked> 縦</label>
+              <label><input type="radio" name="orientation" value="landscape"> 横</label>
+            </div>
+            <div class="form-group">
+              <label for="framePattern">装飾フレーム:</label>
+              <select id="framePattern" name="framePattern">
+                <option value="luxury">ラグジュアリー（華やか・高級感）</option>
+                <option value="simple">シンプル（極細の線とドット）</option>
+                <option value="modern">モダン（アシンメトリー・幾何学）</option>
+                <option value="artdeco">アールデコ（幾何学・クラシック）</option>
+                <option value="floral">ボタニカル（葉とツタの枠）</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="bgStyle">背景グラデーション:</label>
+              <select id="bgStyle" name="bgStyle">
+                <option value="lavender">薄い紫（ラベンダー）</option>
+                <option value="pink">薄いピンク（さくら）</option>
+                <option value="gold">薄い金（シャンパンゴールド）</option>
+                <option value="green">薄い緑（ミントグリーン）</option>
+                <option value="white">グラデーションなし（白）</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>お届け先 (任意)</legend>
+            <div class="form-group">
+              <input type="text" id="recipient" name="recipient" placeholder="例: 株式会社〇〇 代表取締役 〇〇">
+              <small>※入力された場合のみ、末尾に「様へ」が自動で追加されます。</small>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>タイトル (必須)</legend>
+            <div class="form-group">
+              <input type="text" id="title" name="title" list="title-presets" value="祝開店" required>
+              <datalist id="title-presets">
+                <option value="祝開店"></option>
+                <option value="祝御開業"></option>
+                <option value="御祝"></option>
+                <option value="祝御成約"></option>
+                <option value="祝発展"></option>
+              </datalist>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>差出人</legend>
+            <div class="form-group">
+              <label for="senderCompany">会社名 (任意):</label>
+              <input type="text" id="senderCompany" name="senderCompany" placeholder="例: 株式会社着生屋">
+            </div>
+            
+            <label>役職・氏名 (連名の場合は複数入力):</label>
+            <div class="form-group sender-row">
+              <input type="text" name="senderTitle1" placeholder="役職1 (例: 代表取締役)" style="width: 40%; display: inline-block;">
+              <input type="text" name="senderName1" placeholder="氏名1 (必須)" required style="width: 55%; display: inline-block;">
+            </div>
+            <div class="form-group sender-row">
+              <input type="text" name="senderTitle2" placeholder="役職2 (任意)" style="width: 40%; display: inline-block;">
+              <input type="text" name="senderName2" placeholder="氏名2 (任意)" style="width: 55%; display: inline-block;">
+            </div>
+            <div class="form-group sender-row">
+              <input type="text" name="senderTitle3" placeholder="役職3 (任意)" style="width: 40%; display: inline-block;">
+              <input type="text" name="senderName3" placeholder="氏名3 (任意)" style="width: 55%; display: inline-block;">
+            </div>
+          </fieldset>
+
+        </form>
+        <div class="actions">
+          <button id="download-btn" class="primary-btn">PNGとしてダウンロード (300dpi)</button>
+        </div>
+      </div>
+
+      <div class="preview-panel">
+        <h2>プレビュー</h2>
+        <div class="canvas-wrapper">
+          <canvas id="preview-canvas"></canvas>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

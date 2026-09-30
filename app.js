@@ -166,19 +166,80 @@ document.addEventListener("DOMContentLoaded", () => {
     <rect x="65" y="65" width="870" height="1284" fill="none" stroke="#C62828" stroke-width="2" />
     <!-- 縁起の良い角飾り -->
     <g fill="#D4AF37">
-      <!-- 左上 -->
       <polygon points="50,50 150,50 150,65 65,65 65,150 50,150" />
       <polygon points="75,75 120,75 120,85 85,85 85,120 75,120" />
-      <!-- 右上 -->
       <polygon points="950,50 850,50 850,65 935,65 935,150 950,150" />
       <polygon points="925,75 880,75 880,85 915,85 915,120 925,120" />
-      <!-- 左下 -->
       <polygon points="50,1364 150,1364 150,1349 65,1349 65,1264 50,1264" />
       <polygon points="75,1339 120,1339 120,1329 85,1329 85,1294 75,1294" />
-      <!-- 右下 -->
       <polygon points="950,1364 850,1364 850,1349 935,1349 935,1264 950,1264" />
       <polygon points="925,1339 880,1339 880,1329 915,1329 915,1294 925,1294" />
     </g>
+  </svg>`;
+
+  const SVG_FRAME_POP = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
+    <!-- 角が丸いポップな太枠 -->
+    <rect x="40" y="40" width="920" height="1334" rx="40" ry="40" fill="none" stroke="#FF4081" stroke-width="12" stroke-dasharray="30 15" />
+    <rect x="60" y="60" width="880" height="1294" rx="20" ry="20" fill="none" stroke="#00BCD4" stroke-width="4" />
+    <!-- 紙吹雪 (Confetti) -->
+    <g opacity="0.7">
+      <circle cx="100" cy="120" r="15" fill="#FFEB3B" />
+      <polygon points="150,80 170,110 130,110" fill="#00BCD4" />
+      <rect x="80" y="200" width="20" height="20" transform="rotate(45 90 210)" fill="#FF4081" />
+      <circle cx="900" cy="130" r="12" fill="#FF4081" />
+      <polygon points="850,70 870,100 830,100" fill="#FFEB3B" />
+      <circle cx="120" cy="1300" r="18" fill="#00BCD4" />
+      <rect x="180" y="1250" width="15" height="15" transform="rotate(20 187 1257)" fill="#FFEB3B" />
+      <polygon points="900,1300 920,1330 880,1330" fill="#FF4081" />
+      <circle cx="820" cy="1320" r="14" fill="#00BCD4" />
+    </g>
+    <!-- 四隅のリボン -->
+    <g fill="#FF4081">
+      <path d="M 10,10 L 120,10 L 100,50 L 120,90 L 10,90 Z" transform="translate(10, 10) rotate(-45 65 50)" />
+      <path d="M 10,10 L 120,10 L 100,50 L 120,90 L 10,90 Z" transform="translate(870, 1314) rotate(135 65 50)" />
+    </g>
+  </svg>`;
+
+  const SVG_FRAME_VINTAGE = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
+    <!-- チケットのような切り欠き -->
+    <path d="
+      M 80,30 L 920,30 A 50,50 0 0,0 970,80 L 970,1334 A 50,50 0 0,0 920,1384 L 80,1384 A 50,50 0 0,0 30,1334 L 30,80 A 50,50 0 0,0 80,30 Z
+    " fill="none" stroke="#3E2723" stroke-width="4" />
+    <!-- 内側の破線 -->
+    <path d="
+      M 90,45 L 910,45 A 35,35 0 0,0 955,90 L 955,1324 A 35,35 0 0,0 910,1369 L 90,1369 A 35,35 0 0,0 45,1324 L 45,90 A 35,35 0 0,0 90,45 Z
+    " fill="none" stroke="#3E2723" stroke-width="2" stroke-dasharray="10 10" />
+    <!-- 上下のバーコード風装飾 -->
+    <g fill="#3E2723">
+      <rect x="400" y="15" width="5" height="15" /><rect x="410" y="15" width="2" height="15" />
+      <rect x="417" y="15" width="8" height="15" /><rect x="430" y="15" width="3" height="15" />
+      <rect x="438" y="15" width="6" height="15" /><rect x="448" y="15" width="2" height="15" />
+      <rect x="455" y="15" width="5" height="15" /><rect x="465" y="15" width="8" height="15" />
+      <rect x="478" y="15" width="2" height="15" /><rect x="485" y="15" width="6" height="15" />
+      <rect x="495" y="15" width="10" height="15" />
+      <text x="515" y="27" font-family="monospace" font-size="12" font-weight="bold">NO.0001</text>
+    </g>
+  </svg>`;
+
+  const SVG_FRAME_NORDIC = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1414" preserveAspectRatio="none">
+    <!-- 不規則な配置の重なり合う半透明サークル（北欧テキスタイル風） -->
+    <g opacity="0.6">
+      <circle cx="50" cy="50" r="100" fill="#FFAB91" />
+      <circle cx="120" cy="80" r="70" fill="#81D4FA" />
+      <circle cx="70" cy="150" r="50" fill="#FFE082" />
+      <circle cx="950" cy="1364" r="120" fill="#81D4FA" />
+      <circle cx="850" cy="1300" r="80" fill="#FFE082" />
+      <circle cx="900" cy="1220" r="60" fill="#FFAB91" />
+      <circle cx="950" cy="100" r="80" fill="#FFE082" />
+      <circle cx="880" cy="60" r="50" fill="#FFAB91" />
+      <circle cx="60" cy="1350" r="90" fill="#FFAB91" />
+      <circle cx="130" cy="1280" r="50" fill="#81D4FA" />
+    </g>
+    <!-- 全体を囲む手書き風のゆるい線 -->
+    <path d="M 30,50 Q 500,20 970,50 Q 980,707 970,1364 Q 500,1394 30,1364 Q 20,707 30,50 Z" fill="none" stroke="#5D4037" stroke-width="4" stroke-dasharray="20 10" opacity="0.8" />
   </svg>`;
 
   const FRAMES = {
@@ -189,7 +250,10 @@ document.addEventListener("DOMContentLoaded", () => {
     artdeco: SVG_FRAME_ARTDECO,
     floral: SVG_FRAME_FLORAL,
     boldleaf: SVG_FRAME_BOLD_LEAF,
-    japanese: SVG_FRAME_JAPANESE
+    japanese: SVG_FRAME_JAPANESE,
+    pop: SVG_FRAME_POP,
+    vintage: SVG_FRAME_VINTAGE,
+    nordic: SVG_FRAME_NORDIC
   };
 
   function getState() {

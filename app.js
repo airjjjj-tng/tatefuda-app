@@ -491,14 +491,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const col = block.cols === 2 ? i % 2 : 0;
             const row = block.cols === 2 ? Math.floor(i / 2) : i;
             
-            // rowHeightを使って各行のY開始位置を計算
-            let rowStartY = currentY + (currentNameFontSize / 2) + (row * (block.rowHeight + block.spacing));
-            
-            let nameStartY = rowStartY;
-            if (state.orientation === 'landscape' && sender.title) {
-               // 役職がある場合、名前は少し下にずらす
-               nameStartY += currentTitleFontSize2 * 0.8; 
-            }
+            // rowHeightを使って各行の中心Y位置を計算
+            let rowStartY = currentY + (block.rowHeight / 2) + (row * (block.rowHeight + block.spacing));
             
             ctx.font = `900 ${currentNameFontSize}px "Noto Serif JP", serif`; 
             let nameWidth = ctx.measureText(sender.name).width;
@@ -514,14 +508,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (state.orientation === 'landscape') {
               // 横レイアウト：役職を名前の少し左上に配置
+              let nameY = rowStartY;
+              
               if (sender.title) {
                 ctx.font = `700 ${currentTitleFontSize2}px "Noto Serif JP", serif`;
-                let titleX = startXName - currentTitleFontSize2; // 少し左
-                let titleY = rowStartY - (currentTitleFontSize2 * 0.2); // 左上
+                let titleX = startXName - (currentTitleFontSize2 * 0.5); // 少し左
+                // 役職は行の上半分に
+                let titleY = rowStartY - (block.rowHeight / 2) + (currentTitleFontSize2 / 2);
                 ctx.fillText(sender.title, titleX, titleY);
+                
+                // 役職がある場合、名前は行の下半分に
+                nameY = rowStartY + (block.rowHeight / 2) - (currentNameFontSize / 2);
               }
+              
               ctx.font = `900 ${currentNameFontSize}px "Noto Serif JP", serif`;
-              ctx.fillText(sender.name, startXName, nameStartY);
+              ctx.fillText(sender.name, startXName, nameY);
             } else {
               // 縦レイアウト：役職と名前を同じ行に配置
               let totalNameWidth = nameWidth;
@@ -538,11 +539,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
               if (sender.title) {
                 ctx.font = `700 ${currentTitleFontSize2}px "Noto Serif JP", serif`;
-                ctx.fillText(sender.title, startX, nameStartY);
+                ctx.fillText(sender.title, startX, rowStartY);
                 startX += ctx.measureText(sender.title).width + spaceBetweenTitleAndName;
               }
               ctx.font = `900 ${currentNameFontSize}px "Noto Serif JP", serif`;
-              ctx.fillText(sender.name, startX, nameStartY);
+              ctx.fillText(sender.name, startX, rowStartY);
             }
           });
         }

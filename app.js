@@ -486,54 +486,56 @@ document.addEventListener("DOMContentLoaded", () => {
           const spaceBetweenTitleAndName = 30 * scale; 
           const currentNameFontSize = block.nameFontSize || nameFontSize;
           const currentTitleFontSize2 = block.titleFontSize2 || titleFontSize2;
+          const isLandscape = state.orientation === 'landscape';
+          const isTopTitle = isLandscape && block.senders.length < 3;
           
           block.senders.forEach((sender, i) => {
             const col = block.cols === 2 ? i % 2 : 0;
             const row = block.cols === 2 ? Math.floor(i / 2) : i;
             
-            // rowHeightを使って各行の中心Y位置を計算
             let rowStartY = currentY + (block.rowHeight / 2) + (row * (block.rowHeight + block.spacing));
-            
-            ctx.font = `900 ${currentNameFontSize}px "Noto Serif JP", serif`; 
-            let nameWidth = ctx.measureText(sender.name).width;
-
-            let startXName = centerX - (nameWidth / 2);
-            if (block.cols === 2) {
-              const colCenterX = col === 0 ? (centerX - width * 0.22) : (centerX + width * 0.22);
-              startXName = colCenterX - (nameWidth / 2);
-            }
-
-            ctx.textAlign = 'left';
             ctx.fillStyle = state.colorSenderName;
-
-            if (state.orientation === 'landscape') {
-              // 横レイアウト：役職を名前の少し左上に配置
-              let nameY = rowStartY;
+            
+            if (isTopTitle) {
+              // 横レイアウト 1〜2名：役職を名前の左上に配置
+              ctx.font = `900 ${currentNameFontSize}px "Noto Serif JP", serif`; 
+              let nameWidth = ctx.measureText(sender.name).width;
               
+              let startXName = centerX - (nameWidth / 2);
+              if (block.cols === 2) {
+                const colCenterX = col === 0 ? (centerX - width * 0.22) : (centerX + width * 0.22);
+                startXName = colCenterX - (nameWidth / 2);
+              }
+              
+              let nameY = rowStartY;
               if (sender.title) {
                 ctx.font = `700 ${currentTitleFontSize2}px "Noto Serif JP", serif`;
-                let titleX = startXName - (currentTitleFontSize2 * 0.5); // 少し左
-                // 役職は行の上半分に
+                let titleX = startXName - (currentTitleFontSize2 * 0.5); 
                 let titleY = rowStartY - (block.rowHeight / 2) + (currentTitleFontSize2 / 2);
                 ctx.fillText(sender.title, titleX, titleY);
                 
-                // 役職がある場合、名前は行の下半分に
                 nameY = rowStartY + (block.rowHeight / 2) - (currentNameFontSize / 2);
               }
               
               ctx.font = `900 ${currentNameFontSize}px "Noto Serif JP", serif`;
               ctx.fillText(sender.name, startXName, nameY);
+              
             } else {
-              // 縦レイアウト：役職と名前を同じ行に配置
-              let totalNameWidth = nameWidth;
+              // 縦レイアウト、または横レイアウトで3名以上：役職と名前を同じ行（横並び）に配置
+              let totalNameWidth = 0;
               if (sender.title) {
                 ctx.font = `700 ${currentTitleFontSize2}px "Noto Serif JP", serif`;
                 totalNameWidth += ctx.measureText(sender.title).width + spaceBetweenTitleAndName;
               }
+              ctx.font = `900 ${currentNameFontSize}px "Noto Serif JP", serif`; 
+              totalNameWidth += ctx.measureText(sender.name).width;
               
               let startX = centerX - (totalNameWidth / 2);
               if (block.cols === 2) {
-                const colCenterX = col === 0 ? (centerX - width * 0.22) : (centerX + width * 0.22);
+                // 3名以上の場合は横幅が広くなるので、中心を少し外側に広げるか？
+                // 横レイアウトで3名以上の場合は少し広めに
+                const offset = isLandscape ? width * 0.23 : width * 0.22;
+                const colCenterX = col === 0 ? (centerX - offset) : (centerX + offset);
                 startX = colCenterX - (totalNameWidth / 2);
               }
 

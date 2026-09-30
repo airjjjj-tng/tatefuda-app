@@ -51,10 +51,13 @@ main {
 }
 
 .editor-panel, .preview-panel {
-  background: var(--panel-bg);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
 }
 
 .editor-panel {
@@ -68,9 +71,7 @@ main {
   align-items: center;
   position: sticky;
   top: 20px;
-  /* 画面の高さに収まるように最大高さを指定し、はみ出す場合はスクロールできるようにする */
   max-height: calc(100vh - 40px);
-  overflow-y: auto;
 }
 
 fieldset {
@@ -145,7 +146,8 @@ small {
 
 .canvas-wrapper {
   width: 100%;
-  overflow: auto;
+  flex: 1;
+  min-height: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,7 +160,8 @@ small {
 canvas {
   /* Scale visually, real size is huge (300dpi) */
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
+  object-fit: contain;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   background: white;
 }

@@ -546,7 +546,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           });
         }
-        }
         
         currentY += block.height;
       }
